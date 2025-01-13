@@ -22,7 +22,10 @@ env.config({ path: "./config.env" });
 MONGODB_URI = process.env.MONGODB_URI;
 
 app.use(express.json()); // Middleware to parse JSON
-app.use(cors()); // Enable CORS
+app.use(cors({
+  origin: 'https://smart-quiz-scheduler.netlify.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
 
 // MongoDB connection
 mongoose
